@@ -1,5 +1,5 @@
 import asyncio
-
+from typing import Union, Optional
 import websockets
 import json
 import logging
@@ -13,7 +13,7 @@ from BinaryOptionsTools.platforms.pocketoption.ws.objects.time_sync import TimeS
 
 import re
 
-def get_user_agent(message: str) -> dict[str, int | str] | None:
+def get_user_agent(message: str) -> Optional[dict[str, Union[int, str]]]:
     # Extract user agent length
     pattern_length = r'"user_agent";s:(\d+):"'
     match_length = re.search(pattern_length, message)
